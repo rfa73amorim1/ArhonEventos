@@ -1,0 +1,85 @@
+﻿@model AthonEventos.Models.Evento
+
+@{
+    ViewBag.Title = "ChamarPalestra";
+}
+
+<div class="jumbotron" style=" background-image: linear-gradient(#0026ff, #ff00dc);">
+    <div class="masthead">
+        <h1>Detalhes do Evento</h1>
+    </div>
+</div>
+
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EventoName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventoName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventoDescricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventoDescricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventoDtInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventoDtInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventoDtFim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventoDtFim)
+        </dd>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Palestra</th>
+                    <th>Descrição</th>
+                    <th>Data</th>
+                    <th>Palestrante</th>
+                </tr>
+                @foreach (var item in Model.Palestras)
+                {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PalestraName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PalestraDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PalestraDt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Palestrante.Usuario.FullName)
+                </td>
+                <td>
+                    @Html.ActionLink("Cadastrar", "ChamarPalestra", new { id = item.EventoID }, new { @class = "btn btn-sm btn-primary" })
+                </td>
+
+            </tr>
+                }
+            </table>
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EventoID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

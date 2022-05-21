@@ -7,11 +7,9 @@
         <h1>Athon Eventos</h1>
         <p class="lead">
             Amplie seus conhecimentos e impulsione sua carreira! ‌Participe dos eventos promovidos pela Athon!
-        </p>
-        <p><a href="https://athonedu.com.br/" class="btn btn-primary btn-lg">Encontre um evento &raquo;</a></p>
-
+        </p>        
+            @Html.ActionLink("Encontre um Evento", "ChamarEvento", "Exibicao", null, new { @class = "btn btn-primary btn-lg" })        
     </div>
-
 </div>
 
 <p></p>
@@ -85,7 +83,7 @@
                 <h5>Palestra 3</h5>
             </div>
         </div>
-        
+
     </div>
 
     <!-- Controls -->
@@ -104,7 +102,7 @@
     <div class="col-md-12">
         <h2>Rever um evento ou Palestra?</h2>
         <p>O usuário cadastradao será direcionado para a página onde acessa uma playlist de vídeos de palestras do evento, através de um canal do YouTube.</p>
-        <p><a class="btn btn-primary btn-xl rounded-pill mt-5" href="https://www.youtube.com/watch?v=qBJ9Vo-8DEI">Clique Aqui &raquo;</a></p>
+        <p><a class="btn btn-primary btn-xl rounded-pill mt-5" href="https://www.youtube.com/watch?v=qBJ9Vo-8DEI" target="_blank">Clique Aqui &raquo;</a></p>
     </div>
 </div>
 
