@@ -215,6 +215,9 @@
     <Content Include="Imagens\DirHumanos.jpg" />
     <Content Include="Imagens\Financ.jpg" />
     <Content Include="Imagens\Sietec.png" />
+    <Content Include="Imagens\_webinar1.jpg" />
+    <Content Include="Imagens\_webinar2.jpg" />
+    <Content Include="Imagens\_webinar3.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
