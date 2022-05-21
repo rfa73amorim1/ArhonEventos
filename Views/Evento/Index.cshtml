@@ -1,0 +1,59 @@
+﻿@model IEnumerable<AthonEventos.Models.Evento>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EventoName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventoDescricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventoDtInicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventoDtFim)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventoName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventoDescricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventoDtInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventoDtFim)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.EventoID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.EventoID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.EventoID })
+            </td>
+        </tr>
+    }
+
+</table>

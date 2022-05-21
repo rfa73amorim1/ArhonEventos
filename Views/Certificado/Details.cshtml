@@ -1,0 +1,42 @@
+﻿@model AthonEventos.Models.Certificado
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Certificado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PalestraID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Palestra.PalestraName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CertificadoDt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CertificadoDt)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CertificadoID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,81 @@
+﻿@model AthonEventos.Models.Palestra
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+<p class="error">@ViewBag.ErrorMessage</p>
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Palestra</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Evento.EventoName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Evento.EventoName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Palestrante.PalestranteID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Palestrante.Usuario.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PalestraName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PalestraName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PalestraTema)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PalestraTema)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PalestraDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PalestraDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PalestraUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PalestraUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PalestraDt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PalestraDt)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
