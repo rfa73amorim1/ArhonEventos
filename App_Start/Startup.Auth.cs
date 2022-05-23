@@ -34,7 +34,7 @@ namespace AthonEventos
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
-            });            
+            });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // Permite que o aplicativo armazene temporariamente as informações do usuário quando ele estiver verificando o segundo fator no processo de autenticação de dois fatores.
@@ -54,15 +54,15 @@ namespace AthonEventos
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "399889352033801",
+               appSecret: "e7bf9a7987ef41b16abd690dbd346687");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "609015173764-igaq1g23r40fho44jbulpubj6vo43593.apps.googleusercontent.com",
+                ClientSecret = "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"
+            });
         }
     }
 }

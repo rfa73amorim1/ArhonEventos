@@ -12,12 +12,12 @@ namespace AthonEventos.Controllers
     public class ExibicaoController : Controller
     {
         private AthonEventosContext db = new AthonEventosContext();
-        public ActionResult ChamarEvento()
+        public ActionResult EncontreEvento()
         {
             return View(db.Eventos.ToList());
         }
 
-        public ActionResult ChamarPalestra(int? id)
+        public ActionResult ChamarPalestras(int? id)
         {
             if (id == null)
             {
@@ -29,6 +29,20 @@ namespace AthonEventos.Controllers
                 return HttpNotFound();
             }
             return View(evento);
+        }
+       
+        public ActionResult EscolherPalestra(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Palestra palestra = db.Palestras.Find(id);
+            if (palestra == null)
+            {
+                return HttpNotFound();
+            }
+            return View(palestra);
         }
 
 

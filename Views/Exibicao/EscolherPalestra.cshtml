@@ -1,0 +1,78 @@
+﻿@model AthonEventos.Models.Palestra
+
+@{
+    ViewBag.Title = "Palestra";
+}
+<div class="jumbotron" style=" background-image: linear-gradient(#e195f4, #f7c050);">
+    <div class="masthead">
+        <h1>@ViewBag.Title</h1>
+    </div>
+</div>
+
+
+<div>
+    <h4>Palestra</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Evento.EventoName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Evento.EventoName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Palestrante.PalestranteDescrição)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Palestrante.PalestranteDescrição)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PalestraName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PalestraName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PalestraTema)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PalestraTema)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PalestraDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PalestraDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PalestraUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PalestraUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PalestraDt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PalestraDt)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PalestraID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
