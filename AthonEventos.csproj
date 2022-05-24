@@ -187,6 +187,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205151304246_InitialCreate.cs" />
+    <Compile Include="Migrations\202205151304246_InitialCreate.designer.cs">
+      <DependentUpon>202205151304246_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205240150391_UpdateTableEventos.cs" />
+    <Compile Include="Migrations\202205240150391_UpdateTableEventos.designer.cs">
+      <DependentUpon>202205240150391_UpdateTableEventos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\EventoViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\Certificado.cs" />
     <Compile Include="Models\Evento.cs" />
@@ -311,6 +321,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202205151304246_InitialCreate.resx">
+      <DependentUpon>202205151304246_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205240150391_UpdateTableEventos.resx">
+      <DependentUpon>202205240150391_UpdateTableEventos.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

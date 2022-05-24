@@ -1,0 +1,50 @@
+﻿@model AthonEventos.Models.Evento
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Evento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EventoName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventoName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventoDescricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventoDescricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventoDtInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventoDtInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventoDtFim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventoDtFim)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EventoID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

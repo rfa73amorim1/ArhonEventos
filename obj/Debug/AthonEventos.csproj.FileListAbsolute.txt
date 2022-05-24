@@ -123,6 +123,9 @@ D:\Workspace\AthonEventos\bin\pt-br\Microsoft.Owin.Security.Google.resources.dll
 D:\Workspace\AthonEventos\bin\pt-br\Microsoft.Owin.Security.Twitter.resources.dll
 D:\Workspace\AthonEventos\bin\pt-br\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 D:\Workspace\AthonEventos\obj\Debug\AthonEventos.csproj.AssemblyReference.cache
+D:\Workspace\AthonEventos\obj\Debug\AthonEventos.Migrations.InitialCreate.resources
+D:\Workspace\AthonEventos\obj\Debug\AthonEventos.Migrations.UpdateTableEventos.resources
+D:\Workspace\AthonEventos\obj\Debug\AthonEventos.csproj.GenerateResource.cache
 D:\Workspace\AthonEventos\obj\Debug\AthonEventos.csproj.CoreCompileInputs.cache
 D:\Workspace\AthonEventos\obj\Debug\AthonEventos.csproj.CopyComplete
 D:\Workspace\AthonEventos\obj\Debug\AthonEventos.dll

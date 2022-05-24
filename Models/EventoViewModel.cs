@@ -6,7 +6,7 @@ using System.Web;
 
 namespace AthonEventos.Models
 {
-    public class Evento
+    public class EventoViewModel
     {
         public int EventoID { get; set; }
 
@@ -30,8 +30,12 @@ namespace AthonEventos.Models
         [Display(Name = "Fim")]
         public DateTime EventoDtFim { get; set; }
 
-        public byte[] Imagem { get; set; }
+        [Required]
+        [DataType(DataType.Upload)]
+        [Display(Name = "Imagem")]
+        public HttpPostedFileBase ImageUpload { get; set; }
 
         public virtual ICollection<Palestra> Palestras { get; set; }
+
     }
 }
