@@ -7,6 +7,14 @@
 <div class="jumbotron" style=" background-image: linear-gradient(#e195f4, #f7c050);">
     <div class="masthead">
         <h1>@ViewBag.Title</h1>
+
+        @if (Model.Imagem != null)
+        {
+            var base64 = Convert.ToBase64String(Model.Imagem);
+            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+            <img src='@imgSrc' style="max-width:250px; max-height:250px;" />
+        }
+
     </div>
 </div>
 
@@ -51,28 +59,28 @@
                     <th>Palestra</th>
                     <th>Descrição</th>
                     <th>Data</th>
-                    <th>Palestrante</th>                 
+                    <th>Palestrante</th>
                 </tr>
                 @foreach (var item in Model.Palestras)
                 {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PalestraName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PalestraDescription)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PalestraDt)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Palestrante.Usuario.FullName)
-                </td>             
-                <td>
-                    @Html.ActionLink("Cadastrar", "EscolherPalestra", new { id = item.PalestraID }, new { @class = "btn btn-sm btn-primary" })
-                </td>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PalestraName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PalestraDescription)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PalestraDt)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Palestrante.Usuario.FullName)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Cadastrar", "EscolherPalestra", new { id = item.PalestraID }, new { @class = "btn btn-sm btn-primary" })
+                        </td>
 
-            </tr>
+                    </tr>
                 }
             </table>
         </dd>

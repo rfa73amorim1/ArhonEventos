@@ -24,7 +24,9 @@
         <th>
             @Html.DisplayNameFor(model => model.PalestranteDescrição)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayName("Foto")
+        </th>
     </tr>
 
     @foreach (var item in Model)
@@ -36,6 +38,16 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PalestranteDescrição)
             </td>
+            @if (item.Imagem != null)
+            {
+                <td>
+                    @{
+                        var base64 = Convert.ToBase64String(item.Imagem);
+                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                    }
+                    <img src='@imgSrc' style="max-width:100px; max-height:100px;" />
+                </td>
+            }
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.PalestranteID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.PalestranteID }) |

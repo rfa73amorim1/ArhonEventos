@@ -9,6 +9,8 @@ using System.Web;
 using System.Web.Mvc;
 using AthonEventos.DAL;
 using AthonEventos.Models;
+using AthonEventos.ViewModels;
+using System.IO;
 
 namespace AthonEventos.Controllers
 {
@@ -48,19 +50,43 @@ namespace AthonEventos.Controllers
         // GET: Evento/Create
         public ActionResult Create()
         {
-            return View();
+            var evento = new EventoViewModel();
+            return View(evento);
         }
 
         // POST: Evento/Create     
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "EventoID,EventoName,EventoDescricao,EventoDtInicio,EventoDtFim")] Evento evento)
+        public async Task<ActionResult> Create(EventoViewModel eventoViewModel)
         {
             try
             {
+                var imageTypes = new string[]{
+                    "image/gif",
+                    "image/jpeg",
+                    "image/pjpeg",
+                    "image/png"
+                };
+
+                if (eventoViewModel.ImageUpload == null || eventoViewModel.ImageUpload.ContentLength == 0)
+                {
+                    ModelState.AddModelError("ImageUpload", "Este campo é obrigatório");
+                }
+                else if (!imageTypes.Contains(eventoViewModel.ImageUpload.ContentType))
+                {
+                    ModelState.AddModelError("ImageUpload", "Escolha imagem GIF, JPG ou PNG.");
+                }
+
                 if (ModelState.IsValid)
                 {
+                    var evento = new Evento();
+                    evento.EventoName = eventoViewModel.EventoName;
+                    evento.EventoDescricao = eventoViewModel.EventoDescricao;
+                    evento.EventoDtInicio = eventoViewModel.EventoDtInicio;
+                    evento.EventoDtFim = eventoViewModel.EventoDtFim;                    
                     db.Eventos.Add(evento);
+                    using (var binaryReader = new BinaryReader(eventoViewModel.ImageUpload.InputStream))
+                        evento.Imagem = binaryReader.ReadBytes(eventoViewModel.ImageUpload.ContentLength);
                     await db.SaveChangesAsync();
                     return RedirectToAction("Index");
                 }
@@ -69,7 +95,7 @@ namespace AthonEventos.Controllers
             {
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
-            return View(evento);
+            return View(eventoViewModel);
         }
 
         // GET: Evento/Edit/5

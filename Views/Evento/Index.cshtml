@@ -30,7 +30,9 @@
         <th>
             @Html.DisplayNameFor(model => model.EventoDtFim)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayName("Banner")
+        </th>
     </tr>
 
     @foreach (var item in Model)
@@ -48,6 +50,19 @@
             <td>
                 @Html.DisplayFor(modelItem => item.EventoDtFim)
             </td>
+
+            @if (item.Imagem != null)
+            {
+                <td>
+                    @{
+                        var base64 = Convert.ToBase64String(item.Imagem);
+                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                    }
+                    <img src='@imgSrc' style="max-width:50px; max-height:50px;" />
+                </td>
+            }
+
+
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.EventoID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.EventoID }) |

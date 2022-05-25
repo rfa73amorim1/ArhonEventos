@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace AthonEventos.Models
+namespace AthonEventos.ViewModels
 {
     public class EventoViewModel
     {
@@ -34,8 +34,7 @@ namespace AthonEventos.Models
         [DataType(DataType.Upload)]
         [Display(Name = "Imagem")]
         public HttpPostedFileBase ImageUpload { get; set; }
-
-        public virtual ICollection<Palestra> Palestras { get; set; }
+       
 
     }
 }

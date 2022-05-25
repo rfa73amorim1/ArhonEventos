@@ -9,6 +9,8 @@ using System.Web;
 using System.Web.Mvc;
 using AthonEventos.DAL;
 using AthonEventos.Models;
+using AthonEventos.ViewModels;
+using System.IO;
 
 namespace AthonEventos.Controllers
 {
@@ -47,18 +49,40 @@ namespace AthonEventos.Controllers
         public ActionResult Create()
         {
             ViewBag.UsuarioID = new SelectList(db.Usuarios, "UsuarioID", "Fullname");
-            return View();
+            var palestrante = new PalestranteViewModel();
+            return View(palestrante);
         }
 
         // POST: Palestrante/Create 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "PalestranteID,PalestranteDescrição,UsuarioID")] Palestrante palestrante)
+        public async Task<ActionResult> Create(PalestranteViewModel palestranteViewModel)
         {
             try
             {
+                var imageTypes = new string[]{
+                    "image/gif",
+                    "image/jpeg",
+                    "image/pjpeg",
+                    "image/png"
+                };
+                if (palestranteViewModel.ImageUpload == null || palestranteViewModel.ImageUpload.ContentLength == 0)
+                {
+                    ModelState.AddModelError("ImageUpload", "Este campo é obrigatório");
+                }
+                else if (!imageTypes.Contains(palestranteViewModel.ImageUpload.ContentType))
+                {
+                    ModelState.AddModelError("ImageUpload", "Escolha imagem GIF, JPG ou PNG.");
+                }
+
                 if (ModelState.IsValid)
                 {
+                    var palestrante = new Palestrante();
+                    palestrante.PalestranteDescrição = palestranteViewModel.PalestranteDescrição;
+                    palestrante.UsuarioID = palestranteViewModel.UsuarioID;
+
+                    using (var binaryReader = new BinaryReader(palestranteViewModel.ImageUpload.InputStream))
+                        palestrante.Imagem = binaryReader.ReadBytes(palestranteViewModel.ImageUpload.ContentLength);
                     db.Palestrantes.Add(palestrante);
                     await db.SaveChangesAsync();
                     return RedirectToAction("Index");
@@ -68,8 +92,8 @@ namespace AthonEventos.Controllers
             {
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
-            ViewBag.UsuarioID = new SelectList(db.Usuarios, "UsuarioID", "UsuarioName", palestrante.UsuarioID);
-            return View(palestrante);
+            ViewBag.UsuarioID = new SelectList(db.Usuarios, "UsuarioID", "UsuarioName", palestranteViewModel.UsuarioID);
+            return View(palestranteViewModel);
         }
 
         // GET: Palestrante/Edit/5
